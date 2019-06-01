@@ -6,19 +6,9 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그인 성공!"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="315dp" />
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="메인 액티비티로" />
+        android:text="로그아웃" />
 </LinearLayout>

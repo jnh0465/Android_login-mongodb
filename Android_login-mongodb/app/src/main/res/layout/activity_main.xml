@@ -9,46 +9,53 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/txt_create_account"
+        android:id="@+id/text_createid"
         android:text="+ CREATE ACCOUNT"
         android:textStyle="bold"
         android:layout_margin="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@color/md_material_blue_600" />
-
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp">
+        android:layout_margin="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_margin="20dp"
+            android:background="@color/md_material_blue_600" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="hakbun"
             android:inputType="textEmailAddress" />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/edit_password"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btn_login"
-        android:text="LOGIN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/autologin_checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="자동로그인" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="LOGIN" />
     </LinearLayout>
 </LinearLayout>

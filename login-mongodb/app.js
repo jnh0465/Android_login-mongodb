@@ -11,6 +11,9 @@ var app=express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+//use SMART_LECTUREROOM
+//db.createCollection("TB_STUDENT")
+
 var MongoClient = mongodb.MongoClient;
 var url = 'mongodb://localhost:27017';
 MongoClient.connect(url,{useNewUrlParser:true}, function(err,client){
@@ -19,6 +22,7 @@ MongoClient.connect(url,{useNewUrlParser:true}, function(err,client){
   else {
     console.log('connect mongodb');
 
+    //없어질 기능
     //user register
     app.post('/register', (request,response,next)=>{
       var post_data = request.body; //post로 넘어온 data 받기
@@ -31,7 +35,7 @@ MongoClient.connect(url,{useNewUrlParser:true}, function(err,client){
         'student_name':student_name
       };
 
-      var db=client.db('TEST_DB');//db name
+      var db=client.db('SMART_LECTUREROOM');//db name
       db.collection('TB_STUDENT').find({'student_id':student_id}).count(function(err,num){//collection name
         if(num!=0){
           response.json('이미 존재하는 아이디입니다.');//****안드로이드 CompositeDisposable에서 전달받을 response
@@ -51,15 +55,15 @@ MongoClient.connect(url,{useNewUrlParser:true}, function(err,client){
       var post_data = request.body;
       var student_id = post_data.student_id, student_password = post_data.student_password;
 
-      var db=client.db('TEST_DB');
+      var db=client.db('SMART_LECTUREROOM');
       db.collection('TB_STUDENT').find({'student_id':student_id}).count(function(err,num){
         if(num==0){
           response.json(2);
           console.log('존재하지 않는 아이디입니다.');
         }else{
           db.collection('TB_STUDENT').findOne({'student_id':student_id},function(err,user){
-            // console.log(user.student_password);  //DB에 입력되어있는 password
-            // console.log(student_password);       //사용자가 입력한 password
+            console.log("DB "+user.student_password);  //DB에 입력되어있는 password
+            console.log("입력 "+student_password);       //사용자가 입력한 password
             if(user.student_password==student_password){ //db의 password와 post로 받은 password가 같으면
               response.json(1);
               console.log('로그인 성공');
